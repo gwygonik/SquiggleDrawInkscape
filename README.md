@@ -9,6 +9,7 @@ This version:
 - can handle large images with ease
 - produces smoother "squiggles"
 - can output CMYK color separations for use with CMY pens
+- can process transparent images (makes background white)
 
 Notes:
 
