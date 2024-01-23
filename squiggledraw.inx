@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension
+    xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+    <name>SquiggleDraw</name>
+    <id>com.artificialcolors.squiggledraw</id>
+
+    <param name="squiggledraw_notebook" type="notebook">
+        <page name="settings_page" gui-text="Settings">
+            <hbox>
+                <vbox width="200">
+                    <param name="rows" type="int" min="10" max="200" gui-text="Rows" appearance="full">50</param>
+                    <param name="cols" type="int" min="10" max="200" gui-text="Columns" appearance="full">50</param>
+                    <param name="freq" type="int" min="1" max="5"    gui-text="Frequency" appearance="full">5</param>
+                    <param name="amp"  type="int" min="1" max="5"    gui-text="Amplitude" appearance="full">5</param>
+                    <separator />
+                    <param name="invert"  type="boolean"             gui-text="Invert Colors">false</param>
+                    <separator />
+                    <param name="path_type" type="optiongroup" appearance="combo" gui-text="Path Direction">
+                            <option value="uni">Left-to-Right</option>
+                            <option value="bidi">Back-and-Forth</option>
+                            <option value="join">Back-and-Forth with Joined Ends</option>
+                    </param>
+                    <separator />
+                    <param name="color_mode" type="optiongroup" appearance="combo" gui-text="Color Mode">
+                            <option value="gray">Grayscale (Classic)</option>
+                            <option value="cmyk">CMY(K)</option>
+                    </param>
+                </vbox>
+            </hbox>
+        </page>
+        <page name="help_page" gui-text="Help">
+            <label appearance="header">Rows and Columns</label>
+            <label>Determines the resolution of the SVG path. Higher numbers allow more details to be generated.</label>
+            <label appearance="header">Frequency</label>
+            <label>How dense the waveform creation is per row/column grid.</label>
+            <label appearance="header">Amplitude</label>
+            <label>How tall each waveform is per row/column grid.</label>
+            <label appearance="header">Invert Colors</label>
+            <label>Inverts black to white in the source image, or in each split color.</label>
+            <label appearance="header">Path Direction</label>
+            <label>The generated paths can go uni-directionally from Left-to-Right, bi-directionally (back-and-forth), or back-and-forth with ends joined together (one continuous path). Note: regardless of mode, the generated SVG is a single path object.</label>
+            <label appearance="header">Color Mode</label>
+            <label>Grayscale is the classic mode which converts selected image to black-and-white before creating the paths, while CMY(K) generates CMY paths (Inkscape uses a conversion method that sets K [black] to 0, which is okay since C+Y+M appears black).</label>
+        </page>
+        <page name="about_page" gui-text="About">
+            <label appearance="header">
+                SquiggleDraw for Inkscape<br/>
+            </label>
+            <label appearance="url">
+                https://github.com/gwygonik/SquiggleDrawInkscape
+            </label>
+            <label><br/>Generates a plottable SVG path using pixel brightness of an image to change the amplitude of waveforms, creating a form of halftoning.
+            Can split a color image into CMY layers for using CMY pens to plot full-color images.
+    		</label>
+        </page>
+    </param>
+
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="Render"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command location="inx" 
+            interpreter="python">squiggledraw.py</command>
+    </script>
+</inkscape-extension>
