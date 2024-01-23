@@ -44,7 +44,7 @@
         </page>
         <page name="about_page" gui-text="About">
             <label appearance="header">
-                SquiggleDraw for Inkscape<br/>
+                SquiggleDraw for Inkscape v1.0<br/>
             </label>
             <label appearance="url">
                 https://github.com/gwygonik/SquiggleDrawInkscape
