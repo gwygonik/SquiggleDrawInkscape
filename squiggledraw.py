@@ -22,9 +22,12 @@ def process_selected_image(self, embedded_image, rows, cols, display_width, disp
     img_stream.write(base64.b64decode(base64_string))
     im = Image.open(img_stream)
     im.save(img_stream, format='PNG')
-
+    im = im.convert('RGBA')
+    # create white image to paste over in case of transparency
+    white_im = Image.new('RGBA', im.size, (255,255,255))
+    tmp_im = Image.alpha_composite(white_im, im);
     # convert to grayscale and blur it
-    im = im.convert('L')
+    im = tmp_im.convert('L')
     if invert == 'true':
         im = ImageOps.invert(im)
     im = im.filter(ImageFilter.GaussianBlur)
@@ -41,9 +44,12 @@ def process_selected_image_CMYK(self, embedded_image, rows, cols, display_width,
     img_stream.write(base64.b64decode(base64_string))
     im = Image.open(img_stream)
     im.save(img_stream, format='PNG')
-
+    im = im.convert('RGBA')
+    # create white image to paste over in case of transparency
+    white_im = Image.new('RGBA', im.size, (255,255,255, 255))
+    tmp_im = Image.alpha_composite(white_im, im);
     # convert to CMYK and split image
-    im = im.convert('CMYK')
+    im = tmp_im.convert('CMYK')
     c,m,y,k = im.split()
     if invert == 'true':
         c = ImageOps.invert(c)
