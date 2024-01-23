@@ -1,16 +1,18 @@
 # SquiggleDraw Inkscape Extension
  
-Inkscape "native" version of the [SquiggleDraw Processing app](https://github.com/gwygonik/SquiggleDraw/).
+Inkscape 1.3+ "native" version of the [SquiggleDraw Processing app](https://github.com/gwygonik/SquiggleDraw/).
 
-This extension will convert the brightness or color intensity of a grayscale or color image into sinewave SVG paths that can then be pen plotted, laser engraved, or used for any purpose you desire!
+This extension will convert the brightness or color intensity of a grayscale or color image into sinewave SVG paths that can then be pen plotted, laser engraved, or used for any purpose you desire! 
 
 ![SquiggleDraw output example in grayscale](./images/ss_3.png?raw=true)
+
+There are user-editable parameters for how detailed the resulting paths are, the intensity and density of the sinewaves, and how the paths are rendered.
 
 ![SquiggleDraw UI with CMYK Example](./images/ss_1.png?raw=true)
 
 This is a complete rewrite with new version of the primary algorithm, taking into account differences in programming language and host application.
 
-This version:
+Compared to the Processing version, this extension:
 - is faster
 - can handle large images with ease
 - produces smoother "squiggles"
@@ -18,6 +20,8 @@ This version:
 - can process transparent images (makes background white)
 
 Notes:
+
+- This extension has only been tested with Inkscape 1.3, but might work in previous versions.
 
 - CMYK is actually CMY due to the way Inkscape converts RGB to CMYK (they remove K). C + M + Y will produce K when overlapping ("rich black") and with cyan, magenta, and yellow ink pens, plots should mix appropriately.
 
