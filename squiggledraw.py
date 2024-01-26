@@ -1,17 +1,11 @@
 ﻿import sys
-import random
 import base64
 
 import inkex
 from inkex import PathElement, Transform
 
-import numpy as np
-
 from io import BytesIO
-from lxml import etree
 from PIL import Image, ImageFilter, ImageOps
-
-import colorsys
 
 
 def process_selected_image(self, embedded_image, rows, cols, display_width, display_height, invert):
@@ -111,7 +105,7 @@ class SquiggleDraw(inkex.GenerateExtension):
     start_y = 0
     sq_width = 0
     sq_height = 0
-    divisors = [128, 64, 32, 16, 8]
+    divisors = [128, 64, 32, 16, 8, 4]
     bidi = 'false'
     connect_ends = 'false'
     transform_orig = None
@@ -127,9 +121,27 @@ class SquiggleDraw(inkex.GenerateExtension):
         pars.add_argument("--path_type", type=str, dest='path_type', default='uni', help="Bidirectional Paths")
         pars.add_argument("--color_mode", type=str, dest="color_mode", default='gray', help="Color Seperation Type")
         #
-        pars.add_argument("--squiggledraw_notebook", type=str, dest="squiggledraw_notebook", default=0)        
+        pars.add_argument("--squiggledraw_notebook", type=str, dest="squiggledraw_notebook", default=0)
 
     def generate(self):
+
+        # guards
+        if self.options.rows < 0:
+            self.options.rows = 0
+        if self.options.rows > 200:
+            self.options.rows = 200
+        if self.options.cols < 0:
+            self.options.cols = 0
+        if self.options.cols > 200:
+            self.options.cols = 200
+        if self.options.freq < 0:
+            self.options.freq = 0
+        if self.options.freq > 6:
+            self.options.freq = 6
+        if self.options.amp < 0:
+            self.options.amp = 0
+        if self.options.amp > 6:
+            self.options.amp = 6
 
         if self.options.path_type == 'bidi':
             self.bidi = 'true'
@@ -205,7 +217,7 @@ class SquiggleDraw(inkex.GenerateExtension):
     def create_squiggles(self, freq, in_style, in_label):
         el = PathElement()
         currentCurve = ""
-        sq_divisor = self.divisors[self.options.amp]
+        sq_divisor = self.divisors[self.options.amp-1]
         sq_max = 256 / sq_divisor;
         for y in range(0, self.options.rows):
             cx = self.start_x 

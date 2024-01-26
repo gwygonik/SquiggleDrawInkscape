@@ -8,10 +8,13 @@
         <page name="settings_page" gui-text="Settings">
             <hbox>
                 <vbox width="200">
+                    <label appearance="header">SquiggleDraw for Inkscape</label>
+                    <label>Select a single, ungrouped image before running this extension. <br/> </label>
+                    <separator />
                     <param name="rows" type="int" min="10" max="200" gui-text="Rows" appearance="full">50</param>
                     <param name="cols" type="int" min="10" max="200" gui-text="Columns" appearance="full">50</param>
-                    <param name="freq" type="int" min="1" max="5"    gui-text="Frequency" appearance="full">5</param>
-                    <param name="amp"  type="int" min="1" max="5"    gui-text="Amplitude" appearance="full">5</param>
+                    <param name="freq" type="int" min="1" max="6"    gui-text="Frequency" appearance="full">2</param>
+                    <param name="amp"  type="int" min="1" max="6"    gui-text="Amplitude" appearance="full">2</param>
                     <separator />
                     <param name="invert"  type="boolean"             gui-text="Invert Colors">false</param>
                     <separator />
@@ -44,7 +47,7 @@
         </page>
         <page name="about_page" gui-text="About">
             <label appearance="header">
-                SquiggleDraw for Inkscape v1.0<br/>
+                SquiggleDraw for Inkscape v1.0.1<br/>
             </label>
             <label appearance="url">
                 https://github.com/gwygonik/SquiggleDrawInkscape
