@@ -1,5 +1,6 @@
 ﻿import sys
 import base64
+import math
 
 import inkex
 from inkex import PathElement, Transform
@@ -143,6 +144,11 @@ class SquiggleDraw(inkex.GenerateExtension):
         if self.options.amp > 6:
             self.options.amp = 6
 
+        self.options.rows = int(math.floor(self.options.rows))
+        self.options.cols = int(math.floor(self.options.cols))
+        self.options.amp  = int(math.floor(self.options.amp))
+        self.options.freq = int(math.floor(self.options.freq))
+
         if self.options.path_type == 'bidi':
             self.bidi = 'true'
             self.connect_ends = 'false'
@@ -152,6 +158,7 @@ class SquiggleDraw(inkex.GenerateExtension):
         else:
             self.bidi = 'false'
             self.connect_ends = 'false'
+
 
         if len(self.svg.selected) > 0:
             selected_image = self.svg.selected[0]
