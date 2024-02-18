@@ -1,8 +1,8 @@
 # SquiggleDraw Inkscape Extension
- 
-Inkscape 1.3+ "native" version of the [SquiggleDraw Processing app](https://github.com/gwygonik/SquiggleDraw/). 
 
-**NOTE: this repo does not yet include an installer. You can copy the .inx and .py files to your extension folder on your computer and things will work.**
+> *NOTE: this repo does not yet include an installer. You can copy the .inx and .py files to your extension folder on your computer and things will work.* [(See: Inkscape Documentation on Installing Extensions)](https://inkscape-manuals.readthedocs.io/en/latest/extensions.html#installing-extensions)
+
+**Inkscape 1.3+ "native" version of the [SquiggleDraw Processing app](https://github.com/gwygonik/SquiggleDraw/).**
 
 This extension will convert the brightness or color intensity of a grayscale or color image into sinewave SVG paths that can then be pen plotted, laser engraved, or used for any purpose you desire! 
 
