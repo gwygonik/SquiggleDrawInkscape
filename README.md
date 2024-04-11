@@ -12,22 +12,15 @@ There are user-editable parameters for how detailed the resulting paths are, the
 
 ![SquiggleDraw UI with CMYK Example](./images/ss_1.png?raw=true)
 
-How to use:
-1. Select the image you want to convert.
-2. Go to the top menus Extetions -> Render -> SquiggleDraw
-3. Enable Live preview check box 
-4. Experiment with parameters Until you are happy with the Results
-5. Click Apply 
-
-Features:
-- Control over the number of rows and Colloms
-- Size of a Squiggle
-- Frequency of a Squiggle
-- Inverting image
+### Features:
+- Control over the number of rows and columns
+- Size of the Squiggles
+- Frequency of the Squiggles
+- Inverting the image colors
 - Path direction:
-  - ->
-  - <-
-  - Connected
+  - -> (Left-to-Right)
+  - <- (Right-to-Left)
+  - Connected ends (Back and forth)
 - Modes:
   - Single-color mode
   - CMYK color mode
@@ -36,17 +29,23 @@ This is a complete rewrite with the new version of the primary algorithm, taking
 
 Compared to the Processing version, this extension:
 - is faster
-- can handle large images with ease
+- can handle large images with ease (memory-dependent)
 - produces smoother "squiggles"
 - can output CMYK color separations for use with CMY pens
 - can process transparent images (makes background white)
 
-Notes:
+### How to use:
+1. Select the image you want to convert.
+2. Go to the top menus Extensions -> Render -> SquiggleDraw
+3. Enable Live preview check box (if desired)
+4. Experiment with parameters until you are happy with the results
+5. Click Apply 
+
+### Notes:
 
 - This extension has only been tested with Inkscape 1.3, but might work in previous versions.
 - CMYK is actually CMY due to the way Inkscape converts RGB to CMYK (they remove K). C + M + Y will produce K when overlapping ("rich black") and with cyan, magenta, and yellow ink pens, plots should mix appropriately.
-- Use of this extension on images created via Inkscape's "edit-Make Bitmap Copy" feature will sometimes produce unexpected results. It is better to create your bitmaps outside of Inkscape.
-- If your image is too big and is crushing Inkscape you can scale it down and "edit-Make Bitmap Copy" before using extensions
+- If your image is too big and is crushing Inkscape, you can scale it down and use Inkscape's "Edit -> Make a Bitmap Copy" feature before using this extension. **Be aware that the "Make a Bitmap Copy" feature can produce unexpected or inconsistent results. It is more reliable to create and scale your bitmaps outside of Inkscape.**
 
 ---
 ![SquiggleDraw UI with close-up of CMYK Example](./images/ss_2.png?raw=true)
